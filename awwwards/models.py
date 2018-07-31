@@ -22,3 +22,11 @@ class Category(models.Model):
 	name=models.CharField(max_length=60,default="")
 
 
+class Project(models.Model):
+	title=models.CharField(max_length=20)
+	image=models.ImageField(upload_to='projects/', blank=True)
+	detailed_description=models.TextField()
+	repo_link=models.CharField(max_length=50)
+	deployed_link=models.CharField(max_length=40)
+	category=models.ForeignKey(Category,related_name='category',null=True, blank=True, on_delete=models.CASCADE)
+
